@@ -1,4 +1,4 @@
-@Library('pipeline-library-demo')_
+@Library('jenkins-pipeline')_
 import com.cleverbuilder.GlobalVars
 
 pipeline {
