@@ -30,9 +30,9 @@ pipeline {
             steps {
                 script {
                     if (Sonar.toBoolean()) {
-                        echo 'Pasando Sonar...'    
+                        echo ' =========== ^^^^^^^^^^^^ Pasando Sonar...'    
                     } else {
-                        echo 'Pasando del Sonar...'    
+                        echo ' =========== ^^^^^^^^^^^^ Pasando del Sonar...'    
                     }
                 }
             }
@@ -42,9 +42,9 @@ pipeline {
             steps {
                 script {
                     if (Nexus.toBoolean()) {
-                        echo 'Subiendo a Nexus...'
+                        echo ' =========== ^^^^^^^^^^^^ Subiendo a Nexus...'
                     } else {
-                        echo 'Pasando de subir a Nexus...'    
+                        echo ' =========== ^^^^^^^^^^^^ Pasando de subir a Nexus...'    
                     }
                 }     
             }
