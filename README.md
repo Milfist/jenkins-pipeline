@@ -1,2 +1,2 @@
 # jenkins-pipeline
-Integración de Jenkins pipeline con shared-librarles
+Integración de Jenkins pipeline con shared-libraries
