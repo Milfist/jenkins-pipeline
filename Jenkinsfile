@@ -28,13 +28,7 @@ pipeline {
         
         stage("SonarQuBe Analysis") {
             steps {
-                script {
-                    if (Sonar.toBoolean()) {
-                        echo ' =========== ^^^^^^^^^^^^ Pasando Sonar...'    
-                    } else {
-                        echo ' =========== ^^^^^^^^^^^^ Pasando del Sonar...'    
-                    }
-                }
+                sonarQuBeAnalysis(Sonar)
             }
         }
           
