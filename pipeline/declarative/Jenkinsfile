@@ -6,7 +6,7 @@ pipeline {
     agent any
 
     options {
-          ansiColor('xterm')
+        ansiColor('xterm')
     }
 
     parameters {
@@ -28,6 +28,14 @@ pipeline {
                 sayHello 'Dave'
           
                 sayHello GlobalVars.foo
+
+                ansiColor('xterm') {
+                    echo "\033[31m [ERROR] \033[0m"
+                    echo "\033[32m [SUCCESS] \033[0m"
+                    echo "\033[33m [WARNING] \033[0m"
+                    echo "\033[34m [INFO] \033[0m"
+                }
+
             }
         }
         
