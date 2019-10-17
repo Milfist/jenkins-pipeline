@@ -57,25 +57,49 @@ pipeline {
     }
     post {
         always {
-            echo 'One way or another, I have finished'
+            ansiColor('xterm') {
+                echo '\033[34m [INFO] One way or another, I have finished \033[0m'
+            }
             deleteDir() /* clean up our workspace */
         }
         success {
-            echo 'I succeeeded!'
-            echo 'Enviando email a: ' + email
+            ansiColor('xterm') {
+                echo "\033[32m [SUCCESS] I succeeeded! \033[0m"
+                echo '\033[34m Enviando email a: \033[0m ' + email
+            }
         }
         unstable {
-            echo 'I am unstable :/'
+            ansiColor('xterm') {
+                echo "\033[33m [WARNING] I am unstable :/ \033[0m"
+            }
         }
         failure {
-            error 'I failed :('
-            echo 'Enviando email a: ' + email
+            ansiColor('xterm') {
+                echo "\033[31m [ERROR] I failed :( \033[0m"
+                echo '\033[34m Enviando email a: \033[0m ' + email
+            }
             //mail to: 'miguel.anguita@gft.com',
                 //subject: "Failed Pipeline: ${currentBuild.fullDisplayName}",
                 //body: "Something is wrong with ${env.BUILD_URL}"
         }
         changed {
-            echo 'Things were different before...'
+            ansiColor('xterm') {
+              echo "\033[33m [WARNING] Things were different before... \033[0m"
+            }
         }
     }
 }
+
+
+//ansiColor('xterm') {
+//    echo "\033[31m [ERROR] \033[0m"
+//    echo "\033[32m [SUCCESS] \033[0m"
+//    echo "\033[33m [WARNING] \033[0m"
+//    echo "\033[34m [INFO] \033[0m"
+//}
+
+
+
+
+
+
