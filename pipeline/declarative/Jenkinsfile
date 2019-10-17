@@ -4,7 +4,11 @@ import com.cleverbuilder.GlobalVars
 pipeline {
     
     agent any
-    
+
+    options {
+          ansiColor('xterm')
+    }
+
     parameters {
         string(name: 'email', defaultValue: 'miguel.anguita@gft.com', description: 'Direcciones de correo para las alertas')
 
@@ -14,27 +18,12 @@ pipeline {
 
         choice(name: 'CHOICE', choices: ['One', 'Two', 'Three'], description: 'Pick something')
     }
-
-    set +x
-    info() {
-      echo "\033[1;33m[Info]    \033[0m $1"
-    }
-
-    error() {
-      echo "\033[1;31m[Error]   \033[0m $1"
-    }
-
-
-    success() {
-      echo "\033[1;32m[Success] \033[0m $1"
-    }
     
     stages {
         stage('Demo') {
             steps {
-                ansiColor('xterm') {
-                    info 'Hello World'
-                }
+
+                echo 'Hello World'
 
                 sayHello 'Dave'
           
@@ -68,25 +57,25 @@ pipeline {
     }
     post {
         always {
-            info 'One way or another, I have finished'
+            echo 'One way or another, I have finished'
             deleteDir() /* clean up our workspace */
         }
         success {
-            success 'I succeeeded!'
+            echo 'I succeeeded!'
             echo 'Enviando email a: ' + email
         }
         unstable {
-            info 'I am unstable :/'
+            echo 'I am unstable :/'
         }
         failure {
             error 'I failed :('
-            info 'Enviando email a: ' + email
+            echo 'Enviando email a: ' + email
             //mail to: 'miguel.anguita@gft.com',
                 //subject: "Failed Pipeline: ${currentBuild.fullDisplayName}",
                 //body: "Something is wrong with ${env.BUILD_URL}"
         }
         changed {
-            info 'Things were different before...'
+            echo 'Things were different before...'
         }
     }
 }
