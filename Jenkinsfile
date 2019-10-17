@@ -1,4 +1,4 @@
-@Library('pipeline-library-demo')_
+@Library('jenkins-pipeline')_
 import com.cleverbuilder.GlobalVars
 
 pipeline {
@@ -28,13 +28,7 @@ pipeline {
         
         stage("SonarQuBe Analysis") {
             steps {
-                script {
-                    if (Sonar.toBoolean()) {
-                        echo ' =========== ^^^^^^^^^^^^ Pasando Sonar...'    
-                    } else {
-                        echo ' =========== ^^^^^^^^^^^^ Pasando del Sonar...'    
-                    }
-                }
+                sonarQuBeAnalysis(Sonar)
             }
         }
           
