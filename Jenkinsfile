@@ -18,7 +18,7 @@ pipeline {
     stages {
         stage('Demo') {
             steps {
-                echo 'Hello World'
+                echo '\033[31mHello World\033[0m'
             
                 sayHello 'Dave'
           
@@ -63,7 +63,7 @@ pipeline {
             echo 'I am unstable :/'
         }
         failure {
-            echo 'I failed :('
+            echo '\033[31mI failed :(\033[0m'
             echo 'Enviando email a: ' + email
             //mail to: 'miguel.anguita@gft.com',
                 //subject: "Failed Pipeline: ${currentBuild.fullDisplayName}",
